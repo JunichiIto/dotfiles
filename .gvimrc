@@ -12,6 +12,7 @@
 let s:cpo_save = &cpo
 set cpo&vim
 
+set backspace+=indent,eol,start 
 
 "
 " Global default options
