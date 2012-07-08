@@ -9,6 +9,8 @@ Bundle 'Shougo/unite.vim'
 Bundle 'thinca/vim-ref'
 Bundle 'thinca/vim-quickrun'
 Bundle 'tpope/vim-rails'
+Bundle 'scrooloose/nerdtree'
+Bundle 'vim-scripts/dbext.vim'
 filetype plugin indent on     " required!
 
 set tags=~/.tags
@@ -160,6 +162,9 @@ let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
 " For perlomni.vim setting.
 " https://github.com/c9s/perlomni.vim
 let g:neocomplcache_omni_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+
+" for dbext
+let dbext_default_SQLITE_bin = 'sqlite3'
 
 "http://www.kawaz.jp/pukiwiki/?vim#cb691f26 
 "文字コードの自動認識
