@@ -170,9 +170,12 @@ let dbext_default_SQLITE_bin = 'sqlite3'
 highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=darkgray
 match ZenkakuSpace /　/
 
-"末尾の半角スペースを視覚化
+" 末尾の半角スペースを視覚化
 highlight WhiteSpaceEOL guibg=#fff
 2match WhiteSpaceEOL /\S\@<=\s\+$/
+
+" For vim-ref
+let g:ref_refe_encoding = 'euc-jp'
 
 "http://www.kawaz.jp/pukiwiki/?vim#cb691f26 
 "文字コードの自動認識
