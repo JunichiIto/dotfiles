@@ -166,6 +166,14 @@ let g:neocomplcache_omni_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 " for dbext
 let dbext_default_SQLITE_bin = 'sqlite3'
 
+" 全角スペースの表示
+highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=darkgray
+match ZenkakuSpace /　/
+
+"末尾の半角スペースを視覚化
+highlight WhiteSpaceEOL guibg=#fff
+2match WhiteSpaceEOL /\S\@<=\s\+$/
+
 "http://www.kawaz.jp/pukiwiki/?vim#cb691f26 
 "文字コードの自動認識
 if &encoding !=# 'utf-8'
