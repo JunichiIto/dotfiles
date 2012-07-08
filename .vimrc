@@ -9,6 +9,7 @@ Bundle 'Shougo/unite.vim'
 Bundle 'thinca/vim-ref'
 Bundle 'thinca/vim-quickrun'
 Bundle 'tpope/vim-rails'
+Bundle 'tpope/vim-fugitive'
 Bundle 'scrooloose/nerdtree'
 Bundle 'vim-scripts/dbext.vim'
 Bundle 'rhysd/my-endwise'
@@ -20,6 +21,7 @@ set ruler
 set cmdheight=2
 set laststatus=2
 set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
+set statusline+=%{fugitive#statusline()}
 set title
 set linespace=0
 set wildmenu
