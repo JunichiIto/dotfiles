@@ -1,4 +1,16 @@
+" http://d.hatena.ne.jp/holypp/20110515/1305443997
 set nocompatible
+filetype off
+
+set rtp+=~/dev/dotfiles/vimfiles/vundle.git/
+call vundle#rc()
+Bundle 'Shougo/neocomplcache'       
+Bundle 'Shougo/unite.vim'
+Bundle 'thinca/vim-ref'
+Bundle 'thinca/vim-quickrun'
+Bundle 'tpope/vim-rails'
+filetype plugin indent on     " required!
+
 set tags=~/.tags
 set directory=~/.vimswap
 set ruler
@@ -107,5 +119,3 @@ set fileformats=unix,dos,mac
 if exists('&ambiwidth')
   set ambiwidth=double
 endif
-
-call pathogen#runtime_append_all_bundles()
