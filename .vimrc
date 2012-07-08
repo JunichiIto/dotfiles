@@ -11,6 +11,7 @@ Bundle 'thinca/vim-quickrun'
 Bundle 'tpope/vim-rails'
 Bundle 'scrooloose/nerdtree'
 Bundle 'vim-scripts/dbext.vim'
+Bundle 'rhysd/my-endwise'
 filetype plugin indent on     " required!
 
 set tags=~/.tags
@@ -106,6 +107,9 @@ inoremap <expr><C-p> pumvisible() ? "\<C-p>" : "\<C-p>\<C-n>"
 inoremap <expr><CR>  pumvisible() ? neocomplcache#close_popup() : "<CR>"
 " 補完をキャンセル
 inoremap <expr><C-e>  neocomplcache#close_popup()
+
+" For my-endwise
+autocmd FileType ruby imap <buffer> <expr><CR>  pumvisible() ? neocomplcache#smart_close_popup() . "\<CR>\<Plug>DiscretionaryEnd" : "\<CR>\<Plug>DiscretionaryEnd"
 
 " ORIGINAL
 "inoremap <expr><C-g>     neocomplcache#undo_completion()
