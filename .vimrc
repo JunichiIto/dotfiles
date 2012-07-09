@@ -12,6 +12,7 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-endwise'
 Bundle 'scrooloose/nerdtree'
 Bundle 'vim-scripts/dbext.vim'
+Bundle 'nathanaelkane/vim-indent-guides'
 filetype plugin indent on     " required!
 
 set tags=~/.tags
@@ -79,3 +80,6 @@ highlight WhiteSpaceEOL guibg=#fff
 
 " For vim-ref
 let g:ref_refe_encoding = 'euc-jp'
+
+" For vim-indent-guides
+let g:indent_guides_enable_on_vim_startup = 1
