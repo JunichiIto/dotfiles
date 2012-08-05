@@ -34,12 +34,13 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-PATH=/usr/local/bin:$PATH
-
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
-rvm use 1.9.3
+#PATH=/usr/local/bin:$PATH
+#
+#PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+#[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
+#rvm use 1.9.3
 
 bindkey -v
 
-alias be= bundle exec
+alias be="bundle exec"
+alias history='fc -l'
