@@ -16,6 +16,8 @@ Bundle 'vim-scripts/dbext.vim'
 Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'vim-scripts/AnsiEsc.vim'
 Bundle 'Shougo/vimproc'
+Bundle 'KohPoll/vim-less'
+Bundle 'tomtom/tcomment_vim'
 filetype plugin indent on     " required!
 
 set tags=~/.tags
@@ -60,6 +62,8 @@ noremap <C-P> :Unite buffer<CR>
 noremap <C-N> :Unite -buffer-name=file file<CR>
 " 最近使ったファイルの一覧
 noremap <C-Z> :Unite file_mru<CR>
+" sourcesを「今開いているファイルのディレクトリ」とする
+noremap :uff :<C-u>UniteWithBufferDir file -buffer-name=file<CR>
 " ウィンドウを分割して開く
 au FileType unite nnoremap <silent> <buffer> <expr> <C-J> unite#do_action('split')
 au FileType unite inoremap <silent> <buffer> <expr> <C-J> unite#do_action('split')
@@ -155,3 +159,22 @@ endfunction
 
 " ファイル名が_spec.rbで終わるファイルを読み込んだ時に上記の設定を自動で読み込む
 au BufReadPost *_spec.rb call RSpecQuickrun()
+
+" 編集中の行に下線を引く
+au InsertLeave * setlocal nocursorline
+au InsertEnter * setlocal cursorline
+au InsertLeave * highlight StatusLine ctermfg=145 guifg=#c2bfa5 guibg=#000000
+au InsertEnter * highlight StatusLine ctermfg=12 guifg=#1E90FF
+
+" 前回開いた位置を覚える
+if has("autocmd")
+    autocmd BufReadPost *
+    \ if line("'\"") > 0 && line ("'\"") <= line("$") |
+    \   exe "normal! g'\"" |
+    \ endif
+endif
+
+" 自動的に閉じ括弧を入力
+imap { {}<LEFT>
+imap [ []<LEFT>
+imap ( ()<LEFT>

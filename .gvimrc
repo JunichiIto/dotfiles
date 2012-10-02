@@ -107,3 +107,4 @@ let &cpo = s:cpo_save
 unlet s:cpo_save
 
 set lsp=2
+set guifont=Menlo:h12
