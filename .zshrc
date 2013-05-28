@@ -44,3 +44,7 @@ bindkey -v
 
 alias be="bundle exec"
 alias history='fc -l'
+
+# http://qiita.com/items/9dd797f42e7bea674705
+export PATH="$HOME/.rbenv/bin:/usr/local/sbin:$PATH"
+eval "$(rbenv init -)"
