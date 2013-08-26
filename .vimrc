@@ -21,7 +21,7 @@ Bundle 'tomtom/tcomment_vim'
 filetype plugin indent on     " required!
 
 set tags=~/.tags
-set directory=~/.vimswap
+set noswapfile
 set ruler
 set cmdheight=2
 set laststatus=2
