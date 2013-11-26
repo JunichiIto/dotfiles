@@ -48,3 +48,5 @@ alias history='fc -l'
 # http://qiita.com/items/9dd797f42e7bea674705
 export PATH="$HOME/.rbenv/bin:/usr/local/sbin:$PATH"
 eval "$(rbenv init -)"
+
+export PATH=$PATH:$(brew --cellar git)'/'$(git --version | sed 's/git version //')/share/git-core/contrib/diff-highlight
