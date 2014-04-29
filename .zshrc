@@ -50,3 +50,5 @@ export PATH="$HOME/.rbenv/bin:/usr/local/sbin:$PATH"
 eval "$(rbenv init -)"
 
 export PATH=$PATH:$(brew --cellar git)'/'$(git --version | sed 's/git version //')/share/git-core/contrib/diff-highlight
+
+source ~/.zsh.d/zsh-notify/notify.plugin.zsh
