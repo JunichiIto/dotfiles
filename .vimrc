@@ -4,20 +4,29 @@ filetype off
 
 set rtp+=~/dev/dotfiles/vimfiles/vundle.git/
 call vundle#rc()
+" ファイルオープンを便利に
 Bundle 'Shougo/unite.vim'
-Bundle 'thinca/vim-ref'
-Bundle 'thinca/vim-quickrun'
+" Rails向けのコマンドを提供する
 Bundle 'tpope/vim-rails'
+" Gitを便利に使う
 Bundle 'tpope/vim-fugitive'
+" Ruby向けにendを自動挿入してくれる
 Bundle 'tpope/vim-endwise'
+" シングルクオートとダブルクオートの入れ替え等(使いこなせていない)
 Bundle 'tpope/vim-surround'
+" ファイルをtree表示してくれる
 Bundle 'scrooloose/nerdtree'
-Bundle 'vim-scripts/dbext.vim'
+" インデントに色を付けて見やすくする
 Bundle 'nathanaelkane/vim-indent-guides'
+" ログファイルを色づけしてくれる？
 Bundle 'vim-scripts/AnsiEsc.vim'
-Bundle 'Shougo/vimproc'
+" less用のsyntaxハイライト
 Bundle 'KohPoll/vim-less'
+" コメントON/OFFを手軽に実行
 Bundle 'tomtom/tcomment_vim'
+" 末尾の半角スペースを視覚化
+Bundle 'bronson/vim-trailing-whitespace'
+" 余談: neocompleteは合わなかった。ctrl+pで補完するのが便利
 filetype plugin indent on     " required!
 
 set tags=~/.tags
@@ -32,7 +41,7 @@ set linespace=0
 set wildmenu
 set showcmd
 set backupdir=$HOME/.vimbackup
-set browsedir=buffer 
+set browsedir=buffer
 set smartcase
 set listchars=tab:>\ ,extends:<
 set hlsearch
@@ -50,6 +59,7 @@ set smarttab
 set tabstop=2
 set whichwrap=b,s,h,l,<,>,[,]
 syntax on
+
 colorscheme desert
 highlight LineNr ctermfg=darkyellow
 
@@ -74,19 +84,20 @@ au FileType unite inoremap <silent> <buffer> <expr> <C-K> unite#do_action('vspli
 au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
 au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
 
-" for dbext
-let dbext_default_SQLITE_bin = 'sqlite3'
-
+" http://inari.hatenablog.com/entry/2014/05/05/231307
 " 全角スペースの表示
-highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=darkgray
-match ZenkakuSpace /　/
+function! ZenkakuSpace()
+    highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=darkgray
+endfunction
 
-" 末尾の半角スペースを視覚化
-highlight WhiteSpaceEOL guibg=#fff
-2match WhiteSpaceEOL /\S\@<=\s\+$/
-
-" For vim-ref
-let g:ref_refe_encoding = 'euc-jp'
+if has('syntax')
+    augroup ZenkakuSpace
+        autocmd!
+        autocmd ColorScheme       * call ZenkakuSpace()
+        autocmd VimEnter,WinEnter * match ZenkakuSpace /　/
+    augroup END
+    call ZenkakuSpace()
+endif
 
 " For vim-indent-guides
 let g:indent_guides_enable_on_vim_startup = 1
@@ -123,48 +134,12 @@ function! s:GetHighlight(hi)
   let hl = substitute(hl, 'xxx', '', '')
   return hl
 endfunction
+""""""""""""""""""""""""""""""
+"挿入モード時、ステータスラインの色を変更
+""""""""""""""""""""""""""""""
 
-" http://qiita.com/items/69035c454de416849b8a
+" filetypeの自動検出
 filetype on
-" quickrunの出力結果にAnsiEscを実行して色付けする
-au FileType quickrun AnsiEsc
-
-" quickrunの実行モジュールをvimprocに設定する
-let g:quickrun_config = {}
-let g:quickrun_config._ = {'runner' : 'vimproc'}
-
-" rspecを実行するための設定を定義する
-" %cはcommandに設定した値に置換される
-" %oはcmdoptに設定した値に置換される
-" %sはソースファイル名に置換される
-let g:quickrun_config['rspec/bundle'] = {
-  \ 'type': 'rspec/bundle',
-  \ 'command': 'rspec',
-  \ 'outputter': 'buffered:target=buffer',
-  \ 'exec': 'bundle exec %c %o --color --drb --tty %s'
-  \}
-let g:quickrun_config['rspec/normal'] = {
-  \ 'type': 'rspec/normal',
-  \ 'command': 'rspec',
-  \ 'outputter': 'buffered:target=buffer',
-  \ 'exec': '%c %o --color --drb --tty %s'
-  \}
-
-" :QuickRunで実行されるコマンドをrspec用の定義に設定する
-" <Leader>lrをタイプした時に、:QuickRun -cmdopt "-l (カーソル行)"を実行するキーマップを定義する ← これがポイント
-function! RSpecQuickrun()
-  let b:quickrun_config = {'type' : 'rspec/bundle'}
-  nnoremap <expr><silent> <Leader>lr "<Esc>:QuickRun -cmdopt \"-l " . line(".") . "\"<CR>"
-endfunction
-
-" ファイル名が_spec.rbで終わるファイルを読み込んだ時に上記の設定を自動で読み込む
-au BufReadPost *_spec.rb call RSpecQuickrun()
-
-" 編集中の行に下線を引く
-au InsertLeave * setlocal nocursorline
-au InsertEnter * setlocal cursorline
-au InsertLeave * highlight StatusLine ctermfg=145 guifg=#c2bfa5 guibg=#000000
-au InsertEnter * highlight StatusLine ctermfg=12 guifg=#1E90FF
 
 " 前回開いた位置を覚える
 if has("autocmd")
@@ -178,3 +153,44 @@ endif
 imap { {}<LEFT>
 imap [ []<LEFT>
 imap ( ()<LEFT>
+
+" よく使うコマンド
+" 移動系
+" HML
+" z
+" e, w, b
+" *で検索
+" %でカッコを行き来する
+" :nでn行目に移動
+" ggで先頭に移動
+" Gで末尾に移動
+" ctrl+F / ctrl+B
+" ctrl+e / ctrl+yで移動
+" 0 ^ $
+"
+"
+" 編集系
+" ci" catとか
+" 複数行をひとまとめに
+" 置換
+" .で繰り返し
+" 2ddとか
+" oやO
+" 矩形選択、矩形編集
+" I / A
+" cとsとiとa
+" dwで単語削除
+" >>でインデント
+" D
+" Rで置換
+" ctrl+a ctrl+xで数字を上下
+" ~やgU等で大文字小文字を入れ返る
+" uでアンドゥ
+"
+"
+" ウインドウ操作等
+" ウインドウ分割
+" エンコード変換
+" set filetype
+" set nowrap
+" zf zO
