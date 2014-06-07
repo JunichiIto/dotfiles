@@ -22,10 +22,7 @@ if !exists("syntax_on")
   syntax on
 endif
 
-if !exists("colors_name")
-    " Use the macvim color scheme by default
-    "colorscheme macvim
-endif
+colorscheme desert
 
 " To make tabs more readable, the label only contains the tail of the file
 " name and the buffer modified flag.
@@ -108,3 +105,4 @@ unlet s:cpo_save
 
 set lsp=2
 set guifont=Menlo:h12
+set lines=90 columns=200

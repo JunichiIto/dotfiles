@@ -2,32 +2,59 @@
 set nocompatible
 filetype off
 
-set rtp+=~/dev/dotfiles/vimfiles/vundle.git/
-call vundle#rc()
-" ファイルオープンを便利に
-Bundle 'Shougo/unite.vim'
-" Rails向けのコマンドを提供する
-Bundle 'tpope/vim-rails'
-" Gitを便利に使う
-Bundle 'tpope/vim-fugitive'
-" Ruby向けにendを自動挿入してくれる
-Bundle 'tpope/vim-endwise'
-" シングルクオートとダブルクオートの入れ替え等(使いこなせていない)
-Bundle 'tpope/vim-surround'
-" ファイルをtree表示してくれる
-Bundle 'scrooloose/nerdtree'
-" インデントに色を付けて見やすくする
-Bundle 'nathanaelkane/vim-indent-guides'
-" ログファイルを色づけしてくれる？
-Bundle 'vim-scripts/AnsiEsc.vim'
-" less用のsyntaxハイライト
-Bundle 'KohPoll/vim-less'
-" コメントON/OFFを手軽に実行
-Bundle 'tomtom/tcomment_vim'
+set nocompatible
+
+if has('vim_starting')
+  set nocompatible               " Be iMproved
+
+  " Required:
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
+
+" Required:
+call neobundle#begin(expand('~/.vim/bundle/'))
+
+" Let NeoBundle manage NeoBundle
+" Required:
+NeoBundleFetch 'Shougo/neobundle.vim'
+
 " 末尾の半角スペースを視覚化
-Bundle 'bronson/vim-trailing-whitespace'
+NeoBundle 'bronson/vim-trailing-whitespace'
+" less用のsyntaxハイライト
+NeoBundle 'KohPoll/vim-less'
+" ログファイルを色づけしてくれる
+NeoBundle 'vim-scripts/AnsiEsc.vim'
+" インデントに色を付けて見やすくする
+NeoBundle 'nathanaelkane/vim-indent-guides'
+
+" ファイルオープンを便利に
+NeoBundle 'Shougo/unite.vim'
+" Unite.vimで最近使ったファイルを表示できるようにする
+NeoBundle 'Shougo/neomru.vim'
+" Rails向けのコマンドを提供する
+NeoBundle 'tpope/vim-rails'
+" ファイルをtree表示してくれる
+NeoBundle 'scrooloose/nerdtree'
+" Gitを便利に使う
+NeoBundle 'tpope/vim-fugitive'
+
+" Ruby向けにendを自動挿入してくれる
+NeoBundle 'tpope/vim-endwise'
+" コメントON/OFFを手軽に実行
+NeoBundle 'tomtom/tcomment_vim'
+" シングルクオートとダブルクオートの入れ替え等(使いこなせていない)
+NeoBundle 'tpope/vim-surround'
+
+call neobundle#end()
+
+" Required:
+filetype plugin indent on
+
+" If there are uninstalled bundles found on startup,
+" this will conveniently prompt you to install them.
+NeoBundleCheck
+
 " 余談: neocompleteは合わなかった。ctrl+pで補完するのが便利
-filetype plugin indent on     " required!
 
 set tags=~/.tags
 set noswapfile
@@ -186,6 +213,7 @@ imap ( ()<LEFT>
 " ctrl+a ctrl+xで数字を上下
 " ~やgU等で大文字小文字を入れ返る
 " uでアンドゥ
+" ctrl+p
 "
 "
 " ウインドウ操作等
