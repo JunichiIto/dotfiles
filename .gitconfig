@@ -1,3 +1,6 @@
 [alias]
 	st = status
 	co = checkout
+[user]
+	name = BanMasanobu
+	email = babababandits@gmail.com
