@@ -20,10 +20,10 @@ call dein#add('Shougo/neomru.vim')
 " ファイルをtree表示してくれる
 call dein#add('scrooloose/nerdtree')
 " Gitを便利に使う
-call dein#add('tpope/vim-fugitive')
+" call dein#add('tpope/vim-fugitive')
 
 " Rails向けのコマンドを提供する
-call dein#add('tpope/vim-rails')
+" call dein#add('tpope/vim-rails')
 " Ruby向けにendを自動挿入してくれる
 call dein#add('tpope/vim-endwise')
 
@@ -36,10 +36,10 @@ call dein#add('tpope/vim-surround')
 call dein#add('nathanaelkane/vim-indent-guides')
 " ログファイルを色づけしてくれる
 call dein#add('vim-scripts/AnsiEsc.vim')
-" 行末の半角スペースを可視化(うまく動かない？)
+" 行末の半角スペースを可視化
 call dein#add('bronson/vim-trailing-whitespace')
 " less用のsyntaxハイライト
-call dein#add('KohPoll/vim-less')
+" call dein#add('KohPoll/vim-less')
 
 " RubyMineのように自動保存する
 call dein#add('907th/vim-auto-save')
@@ -137,7 +137,7 @@ autocmd QuickFixCmdPost *grep* cwindow
 
 " http://blog.remora.cx/2010/12/vim-ref-with-unite.html
 """"""""""""""""""""""""""""""
-" Unit.vimの設定
+" Unite.vimの設定
 """"""""""""""""""""""""""""""
 " 入力モードで開始する
 let g:unite_enable_start_insert=1
