@@ -6,62 +6,51 @@ filetype off
 """"""""""""""""""""""""""""""
 " プラグインのセットアップ
 """"""""""""""""""""""""""""""
-if has('vim_starting')
-  set nocompatible               " Be iMproved
+set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
 
-  " Required:
-  set runtimepath+=~/.vim/bundle/neobundle.vim/
-endif
+call dein#begin(expand('~/.vim/dein'))
 
-" Required:
-call neobundle#begin(expand('~/.vim/bundle/'))
-
-" Let NeoBundle manage NeoBundle
-" Required:
-NeoBundleFetch 'Shougo/neobundle.vim'
+call dein#add('Shougo/dein.vim')
+call dein#add('Shougo/vimproc.vim', {'build': 'make'})
 
 " ファイルオープンを便利に
-NeoBundle 'Shougo/unite.vim'
+call dein#add('Shougo/unite.vim')
 " Unite.vimで最近使ったファイルを表示できるようにする
-NeoBundle 'Shougo/neomru.vim'
+call dein#add('Shougo/neomru.vim')
 " ファイルをtree表示してくれる
-NeoBundle 'scrooloose/nerdtree'
+call dein#add('scrooloose/nerdtree')
 " Gitを便利に使う
-NeoBundle 'tpope/vim-fugitive'
+call dein#add('tpope/vim-fugitive')
 
 " Rails向けのコマンドを提供する
-NeoBundle 'tpope/vim-rails'
+call dein#add('tpope/vim-rails')
 " Ruby向けにendを自動挿入してくれる
-NeoBundle 'tpope/vim-endwise'
+call dein#add('tpope/vim-endwise')
 
 " コメントON/OFFを手軽に実行
-NeoBundle 'tomtom/tcomment_vim'
+call dein#add('tomtom/tcomment_vim')
 " シングルクオートとダブルクオートの入れ替え等
-NeoBundle 'tpope/vim-surround'
+call dein#add('tpope/vim-surround')
 
 " インデントに色を付けて見やすくする
-NeoBundle 'nathanaelkane/vim-indent-guides'
+call dein#add('nathanaelkane/vim-indent-guides')
 " ログファイルを色づけしてくれる
-NeoBundle 'vim-scripts/AnsiEsc.vim'
+call dein#add('vim-scripts/AnsiEsc.vim')
 " 行末の半角スペースを可視化(うまく動かない？)
-NeoBundle 'bronson/vim-trailing-whitespace'
+call dein#add('bronson/vim-trailing-whitespace')
 " less用のsyntaxハイライト
-NeoBundle 'KohPoll/vim-less'
+call dein#add('KohPoll/vim-less')
 
 " RubyMineのように自動保存する
-NeoBundle '907th/vim-auto-save'
+call dein#add('907th/vim-auto-save')
 let g:auto_save = 1
 
 " 余談: neocompleteは合わなかった。ctrl+pで補完するのが便利
 
-call neobundle#end()
+call dein#end()
 
 " Required:
 filetype plugin indent on
-
-" If there are uninstalled bundles found on startup,
-" this will conveniently prompt you to install them.
-NeoBundleCheck
 """"""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""

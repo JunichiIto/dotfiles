@@ -1,4 +1,5 @@
 /vimfiles/bundle/
+/vimfiles/dein/
 /vimfiles/.netrwhist
 .DS_Store
 .idea
