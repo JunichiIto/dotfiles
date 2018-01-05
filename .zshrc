@@ -31,24 +31,34 @@ ZSH_THEME="robbyrussell"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(git)
 
+HISTSIZE=100000
+
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 #PATH=/usr/local/bin:$PATH
-#
-#PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-#[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
-#rvm use 1.9.3
 
 bindkey -v
 
 alias be="bundle exec"
+alias deploys="bin/rake staging deploy"
+alias deployp="bin/rake production deploy"
+alias hrrs="heroku run rails c -r staging"
+alias hrrp="heroku run rails c -r production"
 alias history='fc -l'
+alias plog='tail -f log/development.log'
 
 # http://qiita.com/items/9dd797f42e7bea674705
 export PATH="$HOME/.rbenv/bin:/usr/local/sbin:$PATH"
 eval "$(rbenv init -)"
 
-export PATH=$PATH:$(brew --cellar git)'/'$(git --version | sed 's/git version //')/share/git-core/contrib/diff-highlight
+export PATH=$PATH:$(brew --cellar git)'/'$(git --version | sed 's/git version //' | sed 's/ (Apple Git-55)//')/share/git-core/contrib/diff-highlight
+export PATH=/usr/local/bin:$PATH
 
+autoload -Uz add-zsh-hook
 source ~/.zsh.d/zsh-notify/notify.plugin.zsh
+
+# http://rcmdnk.github.io/blog/2013/12/05/mac-homebrew/
+if [ -f ~/.brew_api_token ];then
+  source ~/.brew_api_token
+fi

@@ -48,6 +48,10 @@ NeoBundle 'bronson/vim-trailing-whitespace'
 " less用のsyntaxハイライト
 NeoBundle 'KohPoll/vim-less'
 
+" RubyMineのように自動保存する
+NeoBundle '907th/vim-auto-save'
+let g:auto_save = 1
+
 " 余談: neocompleteは合わなかった。ctrl+pで補完するのが便利
 
 call neobundle#end()
@@ -67,6 +71,8 @@ NeoBundleCheck
 set tags=~/.tags
 " スワップファイルは使わない(ときどき面倒な警告が出るだけで役に立ったことがない)
 set noswapfile
+" undoファイルは作成しない
+set noundofile
 " カーソルが何行目の何列目に置かれているかを表示する
 set ruler
 " コマンドラインに使われる画面上の行数
@@ -125,6 +131,13 @@ syntax on
 colorscheme desert
 " 行番号の色
 highlight LineNr ctermfg=darkyellow
+" 勝手に改行するのを防ぐ
+" set textwidth=0
+set formatoptions=q
+" textwidthでフォーマットさせたくない
+set formatoptions=q
+" クラッシュ防止（http://superuser.com/questions/810622/vim-crashes-freezes-on-specific-files-mac-osx-mavericks）
+set synmaxcol=200
 """"""""""""""""""""""""""""""
 
 " vimを立ち上げたときに、自動的にvim-indent-guidesをオンにする
