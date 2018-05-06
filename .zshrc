@@ -48,12 +48,14 @@ alias hrrp="heroku run rails c -r production"
 alias history='fc -l'
 alias plog='tail -f log/development.log'
 
-# http://qiita.com/items/9dd797f42e7bea674705
-export PATH="$HOME/.rbenv/bin:/usr/local/sbin:$PATH"
-eval "$(rbenv init -)"
-
 export PATH=$PATH:$(brew --cellar git)'/'$(git --version | sed 's/git version //' | sed 's/ (Apple Git-55)//')/share/git-core/contrib/diff-highlight
 export PATH=/usr/local/bin:$PATH
+
+# http://qiita.com/items/9dd797f42e7bea674705
+export PATH="$PATH:$HOME/.rbenv/bin:/usr/local/sbin"
+eval "$(rbenv init -)"
+
+export PATH="/usr/local/opt/postgresql@9.5/bin:$PATH"
 
 autoload -Uz add-zsh-hook
 source ~/.zsh.d/zsh-notify/notify.plugin.zsh

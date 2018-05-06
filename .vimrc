@@ -20,7 +20,7 @@ call dein#add('Shougo/neomru.vim')
 " ファイルをtree表示してくれる
 call dein#add('scrooloose/nerdtree')
 " Gitを便利に使う
-" call dein#add('tpope/vim-fugitive')
+call dein#add('tpope/vim-fugitive')
 
 " Rails向けのコマンドを提供する
 " call dein#add('tpope/vim-rails')
