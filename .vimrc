@@ -1,7 +1,7 @@
-" 挙動を vi 互換ではなく、Vim のデフォルト設定にする
-set nocompatible
-" 一旦ファイルタイプ関連を無効化する
-filetype off
+" 挙動を vi 互換ではなく、Vim のデフォルト設定にする => .vimrcが存在すれば自動的に有効化されるので設定不要
+" set nocompatible
+" 一旦ファイルタイプ関連を無効化する => vim-plugでは不要
+" filetype off
 
 """"""""""""""""""""""""""""""
 " プラグインのセットアップ
@@ -45,8 +45,8 @@ let g:auto_save = 1
 
 call plug#end()
 
-" Required:
-filetype plugin indent on
+" filetypeの検出を有効化する => vim-plugでは不要
+" filetype plugin indent on
 """"""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""
