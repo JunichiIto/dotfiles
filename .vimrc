@@ -6,48 +6,44 @@ filetype off
 """"""""""""""""""""""""""""""
 " プラグインのセットアップ
 """"""""""""""""""""""""""""""
-set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
-
-call dein#begin(expand('~/.vim/dein'))
-
-call dein#add('Shougo/dein.vim')
-call dein#add('Shougo/vimproc.vim', {'build': 'make'})
+call plug#begin('~/.vim/plugged')
 
 " ファイルオープンを便利に
-call dein#add('Shougo/unite.vim')
+Plug 'Shougo/unite.vim'
 " Unite.vimで最近使ったファイルを表示できるようにする
-call dein#add('Shougo/neomru.vim')
+Plug 'Shougo/neomru.vim'
 " ファイルをtree表示してくれる
-call dein#add('scrooloose/nerdtree')
+Plug 'scrooloose/nerdtree'
 " Gitを便利に使う
-call dein#add('tpope/vim-fugitive')
+Plug 'tpope/vim-fugitive'
 
 " Rails向けのコマンドを提供する
-" call dein#add('tpope/vim-rails')
+" Plug 'tpope/vim-rails'
 " Ruby向けにendを自動挿入してくれる
-call dein#add('tpope/vim-endwise')
+Plug 'tpope/vim-endwise'
 
 " コメントON/OFFを手軽に実行
-call dein#add('tomtom/tcomment_vim')
+Plug 'tomtom/tcomment_vim'
 " シングルクオートとダブルクオートの入れ替え等
-call dein#add('tpope/vim-surround')
+Plug 'tpope/vim-surround'
 
 " インデントに色を付けて見やすくする
-call dein#add('nathanaelkane/vim-indent-guides')
+Plug 'nathanaelkane/vim-indent-guides'
+let g:indent_guides_enable_on_vim_startup = 1
 " ログファイルを色づけしてくれる
-call dein#add('vim-scripts/AnsiEsc.vim')
+Plug 'vim-scripts/AnsiEsc.vim'
 " 行末の半角スペースを可視化
-call dein#add('bronson/vim-trailing-whitespace')
+Plug 'bronson/vim-trailing-whitespace'
 " less用のsyntaxハイライト
-" call dein#add('KohPoll/vim-less')
+" Plug 'KohPoll/vim-less'
 
 " RubyMineのように自動保存する
-call dein#add('907th/vim-auto-save')
+Plug '907th/vim-auto-save'
 let g:auto_save = 1
 
 " 余談: neocompleteは合わなかった。ctrl+pで補完するのが便利
 
-call dein#end()
+call plug#end()
 
 " Required:
 filetype plugin indent on
@@ -128,9 +124,6 @@ set formatoptions=q
 " クラッシュ防止（http://superuser.com/questions/810622/vim-crashes-freezes-on-specific-files-mac-osx-mavericks）
 set synmaxcol=200
 """"""""""""""""""""""""""""""
-
-" vimを立ち上げたときに、自動的にvim-indent-guidesをオンにする
-let g:indent_guides_enable_on_vim_startup = 1
 
 " grep検索の実行後にQuickFix Listを表示する
 autocmd QuickFixCmdPost *grep* cwindow
