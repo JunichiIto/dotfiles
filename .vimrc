@@ -41,6 +41,9 @@ Plug 'bronson/vim-trailing-whitespace'
 Plug '907th/vim-auto-save'
 let g:auto_save = 1
 
+" CSVをカラム単位に色分けする
+Plug 'mechatroner/rainbow_csv'
+
 " 余談: neocompleteは合わなかった。ctrl+pで補完するのが便利
 
 call plug#end()

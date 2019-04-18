@@ -97,12 +97,9 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 bindkey -v
+bindkey "^R" history-incremental-search-backward
 
 alias be="bundle exec"
-alias deploys="bin/rake staging deploy"
-alias deployp="bin/rake production deploy"
-alias hrrs="heroku run rails c -r staging"
-alias hrrp="heroku run rails c -r production"
 alias history='fc -l'
 alias plog='tail -f log/development.log'
 
@@ -113,7 +110,7 @@ export PATH=$PATH:$(brew --cellar git)'/'$(git --version | sed 's/git version //
 export PATH=/usr/local/bin:$PATH
 
 # Postgres
-export PATH="/usr/local/opt/postgresql@9.5/bin:$PATH"
+export PATH="/usr/local/opt/postgresql@9.6/bin:$PATH"
 
 # rbenv
 eval "$(rbenv init -)"
