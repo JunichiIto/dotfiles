@@ -44,6 +44,9 @@ let g:auto_save = 1
 " CSVをカラム単位に色分けする
 Plug 'mechatroner/rainbow_csv'
 
+" ブロック移動の拡張
+Plug 'andymass/vim-matchup'
+
 " 余談: neocompleteは合わなかった。ctrl+pで補完するのが便利
 
 call plug#end()
@@ -126,6 +129,8 @@ set formatoptions=q
 set formatoptions=q
 " クラッシュ防止（http://superuser.com/questions/810622/vim-crashes-freezes-on-specific-files-mac-osx-mavericks）
 set synmaxcol=200
+" G押下時にカラム位置を保持
+set nostartofline
 """"""""""""""""""""""""""""""
 
 " grep検索の実行後にQuickFix Listを表示する

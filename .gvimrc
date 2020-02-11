@@ -23,6 +23,7 @@ if !exists("syntax_on")
 endif
 
 colorscheme desert
+" colorscheme defminus
 
 " To make tabs more readable, the label only contains the tail of the file
 " name and the buffer modified flag.

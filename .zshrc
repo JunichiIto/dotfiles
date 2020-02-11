@@ -115,6 +115,9 @@ export PATH="/usr/local/opt/postgresql@9.6/bin:$PATH"
 # rbenv
 eval "$(rbenv init -)"
 
+# nodenv
+eval "$(nodenv init -)"
+
 # imagemagick
 export PATH="/usr/local/opt/imagemagick@6/bin:$PATH"
 
@@ -123,3 +126,6 @@ export PATH="/usr/local/opt/imagemagick@6/bin:$PATH"
 if [ -f ~/.brew_api_token ];then
   source ~/.brew_api_token
 fi
+
+# https://github.com/thoughtbot/capybara-webkit/wiki/Installing-Qt-and-compiling-capybara-webkit
+export PATH="$(brew --prefix qt@5.5)/bin:$PATH"
