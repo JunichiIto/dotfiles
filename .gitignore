@@ -6,3 +6,5 @@
 /vimfiles/plugged/
 .DS_Store
 .idea
+.generators
+.rakeTasks

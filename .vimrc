@@ -136,6 +136,10 @@ set nostartofline
 " grep検索の実行後にQuickFix Listを表示する
 autocmd QuickFixCmdPost *grep* cwindow
 
+" markdownで => を入力したときのエラー音を無効化する
+" https://twitter.com/nabe11234/status/1372425739463618561
+autocmd BufRead,BufNewFile *.md set showmatch!
+
 " http://blog.remora.cx/2010/12/vim-ref-with-unite.html
 """"""""""""""""""""""""""""""
 " Unite.vimの設定

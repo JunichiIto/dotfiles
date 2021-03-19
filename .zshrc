@@ -103,6 +103,8 @@ alias be="bundle exec"
 alias history='fc -l'
 alias plog='tail -f log/development.log'
 
+setopt share_history
+
 # make diff beautiful
 export PATH=$PATH:$(brew --cellar git)'/'$(git --version | sed 's/git version //' | sed 's/ (Apple Git-55)//')/share/git-core/contrib/diff-highlight
 
@@ -110,13 +112,13 @@ export PATH=$PATH:$(brew --cellar git)'/'$(git --version | sed 's/git version //
 export PATH=/usr/local/bin:$PATH
 
 # Postgres
-export PATH="/usr/local/opt/postgresql@9.6/bin:$PATH"
+export PATH="/usr/local/opt/postgres/bin:$PATH"
 
 # rbenv
 eval "$(rbenv init -)"
 
 # nodenv
-eval "$(nodenv init -)"
+# eval "$(nodenv init -)"
 
 # imagemagick
 export PATH="/usr/local/opt/imagemagick@6/bin:$PATH"
@@ -129,3 +131,5 @@ fi
 
 # https://github.com/thoughtbot/capybara-webkit/wiki/Installing-Qt-and-compiling-capybara-webkit
 export PATH="$(brew --prefix qt@5.5)/bin:$PATH"
+
+export LOCAL_HOST_IP=`ifconfig en0 | grep inet | grep -v inet6 | sed -E "s/inet ([0-9]{1,3}.[0-9]{1,3}.[0-9].{1,3}.[0-9]{1,3}) .*$/\1/" | tr -d "\t"`
