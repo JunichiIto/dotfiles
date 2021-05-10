@@ -105,7 +105,7 @@ let &cpo = s:cpo_save
 unlet s:cpo_save
 
 set lsp=2
-set guifont=Menlo:h12
+set guifont=Menlo:h14
 set lines=90 columns=200
 
 " 自動的に日本語入力(IM)をオン/オフにする機能すべてを禁止
