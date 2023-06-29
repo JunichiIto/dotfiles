@@ -9,3 +9,5 @@
 .generators
 .rakeTasks
 .byebug_history
+.vscode
+vendor/bundle
