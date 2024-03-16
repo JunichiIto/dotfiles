@@ -25,6 +25,10 @@ endif
 colorscheme desert
 " colorscheme defminus
 
+" For live coding
+" colorscheme bluewery-light
+" let g:lightline = { 'colorscheme': 'bluewery_light' }
+
 " To make tabs more readable, the label only contains the tail of the file
 " name and the buffer modified flag.
 set guitablabel=%M%t

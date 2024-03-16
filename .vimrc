@@ -47,6 +47,12 @@ Plug 'mechatroner/rainbow_csv'
 " ブロック移動の拡張
 Plug 'andymass/vim-matchup'
 
+" GitHub Copilot
+Plug 'github/copilot.vim'
+
+" For live coding
+" Plug 'relastle/bluewery.vim'
+
 " 余談: neocompleteは合わなかった。ctrl+pで補完するのが便利
 
 call plug#end()
@@ -120,6 +126,7 @@ set whichwrap=b,s,h,l,<,>,[,]
 syntax on
 " カラースキーマの指定
 colorscheme desert
+
 " 行番号の色
 highlight LineNr ctermfg=darkyellow
 " 勝手に改行するのを防ぐ
