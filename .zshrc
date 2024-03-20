@@ -126,3 +126,6 @@ eval "$(rbenv init - zsh)"
 export PATH="/opt/homebrew/opt/imagemagick@6/bin:$PATH"
 
 export LOCAL_HOST_IP=`ifconfig en0 | grep inet | grep -v inet6 | sed -E "s/inet ([0-9]{1,3}.[0-9]{1,3}.[0-9].{1,3}.[0-9]{1,3}) .*$/\1/" | tr -d "\t"`
+
+# https://qiita.com/jnchito/items/f976382726fecf1d9461
+export PERLLIB="/Library/Developer/CommandLineTools/usr/share/git-core/perl"
